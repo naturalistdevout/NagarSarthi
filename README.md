@@ -1,6 +1,6 @@
-# NagarSarthi — Jaipur Demo
+# NagarSarthi 
 
-A front-end prototype of the NagarSarthi civic complaint platform.
+Civic companion where users report local problems, connect them to the right authority, and follow every step until resolution.
 
 ## Run locally
 Open `index.html` in a browser.
