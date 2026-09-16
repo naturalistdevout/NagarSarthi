@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NagarSarthi — Jaipur Civic Platform</title>
+<style>
+:root{--bg:#eef5ff;--panel:rgba(255,255,255,.72);--text:#10213d;--muted:#65748b;--accent:#0aa889;--accent2:#2b6ff7;--border:rgba(255,255,255,.8);--shadow:0 18px 50px rgba(34,65,110,.14)}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 10% 10%,#cce5ff,transparent 35%),radial-gradient(circle at 90% 0%,#d9fff4,transparent 30%),linear-gradient(135deg,#eef5ff,#eaf8f5);min-height:100vh}
+body.dark{--bg:#07111f;--panel:rgba(14,27,46,.78);--text:#eef7ff;--muted:#9cafc6;--border:rgba(255,255,255,.08);background:radial-gradient(circle at 10% 10%,#12345a,transparent 32%),radial-gradient(circle at 90% 0%,#073d35,transparent 28%),#07111f}
+button{font:inherit;cursor:pointer;border:0}.app{display:flex;min-height:100vh}.sidebar{width:250px;padding:24px 16px;background:rgba(7,28,55,.9);color:white;position:fixed;inset:0 auto 0 0;z-index:5}.brand{font-size:24px;font-weight:800;padding:6px 10px 26px}.brand span{color:#54dfbd}.nav button{display:block;width:100%;text-align:left;background:transparent;color:#cbd8e8;padding:13px 14px;border-radius:12px;margin:5px 0}.nav button.active,.nav button:hover{background:rgba(255,255,255,.1);color:white}.bottom{position:absolute;bottom:22px;left:16px;right:16px}.main{margin-left:250px;width:calc(100% - 250px);padding:28px 34px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.location{background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow);padding:10px 15px;border-radius:14px}.glass{background:var(--panel);border:1px solid var(--border);backdrop-filter:blur(18px);box-shadow:var(--shadow);border-radius:22px}.hero{padding:30px;display:flex;justify-content:space-between;gap:20px}.hero h1{font-size:34px;margin:0 0 8px}.hero p{color:var(--muted);max-width:650px}.primary{background:linear-gradient(135deg,var(--accent),#14c59e);color:white;padding:13px 20px;border-radius:13px;font-weight:700}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:18px 0}.stat{padding:20px}.stat b{font-size:28px;display:block;margin-top:8px}.label{color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:1.45fr 1fr;gap:18px}.card{padding:22px}.card h2{margin:0 0 16px;font-size:18px}.issue{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid rgba(120,140,160,.18)}.icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#e7f2ff;font-size:20px}.dark .icon{background:#172a42}.issue .grow{flex:1}.badge{font-size:11px;padding:5px 8px;border-radius:999px;background:#fff1d7;color:#9a6500}.high{background:#ffe1e1;color:#a52929}.map{height:300px;position:relative;overflow:hidden;background:linear-gradient(135deg,#d9eef0,#f4efd8)}.dark .map{background:linear-gradient(135deg,#163d43,#403d27)}.road{position:absolute;background:rgba(255,255,255,.75);height:16px;transform:rotate(28deg);width:130%;left:-15%;top:46%}.road2{transform:rotate(-25deg);top:20%}.marker{position:absolute;width:18px;height:18px;border-radius:50%;background:#ef5757;border:3px solid white;box-shadow:0 3px 10px #555}.m1{left:28%;top:42%}.m2{left:62%;top:63%;background:#0aa889}.m3{left:74%;top:28%;background:#f0a62b}.municipality{margin-top:18px}.actions{display:flex;gap:10px;flex-wrap:wrap}.action{padding:11px 14px;border-radius:12px;background:rgba(43,111,247,.1);color:var(--accent2)}.page{display:none}.page.active{display:block}.form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.category{padding:18px;border-radius:16px;background:rgba(255,255,255,.45);border:1px solid var(--border);text-align:center}.dark .category{background:rgba(255,255,255,.04)}textarea,input{width:100%;padding:13px;border-radius:12px;border:1px solid rgba(100,120,140,.2);background:rgba(255,255,255,.55);margin:8px 0;color:var(--text)}.dark textarea,.dark input{background:rgba(255,255,255,.06);color:white}.timeline{border-left:3px solid var(--accent);padding-left:18px}.event{margin:18px 0}.toast{position:fixed;right:25px;bottom:25px;background:#09243d;color:white;padding:14px 18px;border-radius:13px;display:none;z-index:10}
+@media(max-width:900px){.sidebar{width:76px}.brand{font-size:0}.brand:after{content:"N";font-size:24px}.nav button{font-size:0;text-align:center}.nav button:first-letter{font-size:20px}.main{margin-left:76px;width:calc(100% - 76px);padding:18px}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.form-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.hero{display:block}.stats{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">◉ Nagar<span>Sarthi</span></div>
+  <div class="nav">
+    <button class="active" onclick="showPage('dashboard',this)">🏠 Dashboard</button>
+    <button onclick="showPage('report',this)">🚨 Report Issue</button>
+    <button onclick="showPage('complaints',this)">📋 My Complaints</button>
+    <button onclick="showPage('nearby',this)">📍 Nearby Issues</button>
+    <button onclick="showPage('municipality',this)">🏛️ Municipalities</button>
+    <button onclick="showPage('profile',this)">👤 Profile</button>
+  </div>
+  <div class="bottom"><button class="nav" onclick="toggleDark()">🌙 Dark Mode</button></div>
+</aside>
+
+<main class="main">
+<div class="top"><div><span class="label">Your civic companion</span><h2 style="margin:4px 0">NagarSarthi</h2></div><div class="location">📍 <b>Jaipur</b> · Ward 67 ▾</div></div>
+
+<section id="dashboard" class="page active">
+<div class="glass hero"><div><h1>Good Morning 👋</h1><p>Report local problems, connect them to the right authority, and follow every step until resolution.</p><div class="actions"><button class="primary" onclick="showPage('report',document.querySelectorAll('.nav button')[1])">+ Report an Issue</button><button class="action" onclick="showPage('nearby',document.querySelectorAll('.nav button')[3])">Explore Jaipur Issues</button></div></div><div style="font-size:80px">🏙️</div></div>
+<div class="stats"><div class="glass stat"><span class="label">Open Complaints</span><b>03</b></div><div class="glass stat"><span class="label">In Progress</span><b>02</b></div><div class="glass stat"><span class="label">Resolved</span><b>07</b></div><div class="glass stat"><span class="label">Community Upvotes</span><b>418</b></div></div>
+<div class="grid">
+<div class="glass card"><h2>🔥 Trending Near You</h2>
+<div class="issue"><div class="icon">🚧</div><div class="grow"><b>Large pothole near Main Road</b><div class="label">Roads · 127 upvotes · 2h ago</div></div><span class="badge high">High</span></div>
+<div class="issue"><div class="icon">💧</div><div class="grow"><b>Water leakage near Park</b><div class="label">Water Supply · 84 upvotes · 5h ago</div></div><span class="badge">Medium</span></div>
+<div class="issue"><div class="icon">🗑️</div><div class="grow"><b>Garbage dumping near ABC Market</b><div class="label">Sanitation · 56 upvotes · 9h ago</div></div><span class="badge">Medium</span></div>
+<div class="issue"><div class="icon">💡</div><div class="grow"><b>Streetlight not working</b><div class="label">Electrical · 42 upvotes · 1d ago</div></div><span class="badge">Low</span></div>
+</div>
+<div class="glass card"><h2>🗺️ Jaipur Locality Map</h2><div class="map"><div class="road"></div><div class="road road2"></div><i class="marker m1"></i><i class="marker m2"></i><i class="marker m3"></i></div><div class="municipality"><b>Jaipur Municipal Corporation</b><div class="label">Ward 67 · 3 open civic issues</div></div></div>
+</div>
+</section>
+
+<section id="report" class="page"><div class="glass card"><h1>🚨 Report an Issue</h1><p class="label">NagarSarthi will help identify and route your complaint to the appropriate organisation.</p><h3>1. Choose the issue</h3><div class="form-grid"><div class="category" onclick="selectCat(this)">🚰<br>Water Supply</div><div class="category" onclick="selectCat(this)">💧<br>Water Leakage</div><div class="category" onclick="selectCat(this)">🗑️<br>Garbage</div><div class="category" onclick="selectCat(this)">🚧<br>Pothole / Road</div><div class="category" onclick="selectCat(this)">💡<br>Streetlight</div><div class="category" onclick="selectCat(this)">🔥<br>Gas Supply</div><div class="category" onclick="selectCat(this)">⚡<br>Electricity</div><div class="category" onclick="selectCat(this)">🚽<br>Drainage</div><div class="category" onclick="selectCat(this)">•••<br>Other</div></div><h3>2. Describe the problem</h3><textarea rows="5" placeholder="Example: Major water leakage outside my house since yesterday..."></textarea><h3>3. Location</h3><input value="Jaipur, Ward 67" /><h3>4. Evidence</h3><input type="file" accept="image/*,video/*" /><br><br><button class="primary" onclick="submitComplaint()">Submit Complaint →</button></div></section>
+
+<section id="complaints" class="page"><div class="glass card"><h1>📋 My Complaints</h1><div class="issue"><div class="icon">💧</div><div class="grow"><b>Water leakage near Park</b><div class="label">#NS-10482 · Water Supply Department</div></div><span class="badge">In Progress</span></div><div class="issue"><div class="icon">💡</div><div class="grow"><b>Streetlight not working</b><div class="label">#NS-10397 · Electrical Department</div></div><span class="badge">In Progress</span></div><div class="issue"><div class="icon">🗑️</div><div class="grow"><b>Garbage collection delay</b><div class="label">#NS-10221 · Sanitation</div></div><span class="badge" style="background:#dcf7ed;color:#087552">Resolved</span></div></div></section>
+
+<section id="nearby" class="page"><div class="glass card"><h1>📍 Nearby Issues — Jaipur</h1><p class="label">Community-confirmed problems in your selected locality.</p><div class="map" style="height:390px"><div class="road"></div><div class="road road2"></div><i class="marker m1"></i><i class="marker m2"></i><i class="marker m3"></i></div><div class="issue"><div class="icon">🚧</div><div class="grow"><b>Pothole near Main Road</b><div class="label">👍 127 people affected · High Priority</div></div><button class="action" onclick="upvote(this)">👍 Upvote</button></div></div></section>
+
+<section id="municipality" class="page"><div class="glass card"><h1>🏛️ Jaipur Municipal Information</h1><p class="label">Information shown for your selected city and ward.</p><h2>Jaipur Municipal Corporation</h2><div class="stats"><div class="glass stat"><span class="label">Ward</span><b>67</b></div><div class="glass stat"><span class="label">Open Issues</span><b>32</b></div><div class="glass stat"><span class="label">Departments</span><b>8</b></div></div><h3>Departments</h3><div class="form-grid"><div class="category">🚰 Water Supply</div><div class="category">🗑️ Sanitation</div><div class="category">🚧 Roads</div><div class="category">💡 Electrical</div><div class="category">🚽 Drainage</div><div class="category">🌳 Parks</div></div></div></section>
+
+<section id="profile" class="page"><div class="glass card"><h1>👤 Citizen Profile</h1><p><b>Verification status:</b> <span style="color:var(--accent)">✓ Aadhaar/e-KYC Verified</span></p><p class="label">Demo account · Jaipur · Ward 67</p><button class="primary" onclick="toast('Profile settings opened')">Edit Profile</button></div></section>
+</main></div>
+<div class="toast" id="toast"></div>
+<script>
+function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');}
+function toggleDark(){document.body.classList.toggle('dark');toast(document.body.classList.contains('dark')?'Dark mode enabled':'Light mode enabled')}
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
+function selectCat(el){document.querySelectorAll('.category').forEach(x=>x.style.outline='none');el.style.outline='3px solid var(--accent)';toast(el.innerText.replace('\n',' ')+' selected')}
+function submitComplaint(){toast('Demo complaint submitted! Smart routing → Jaipur department');}
+function upvote(btn){btn.textContent='✓ Upvoted';btn.disabled=true;toast('Your community upvote was added')}
+</script>
+</body></html>
